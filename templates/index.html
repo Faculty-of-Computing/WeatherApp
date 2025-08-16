@@ -15,10 +15,32 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+        }
+
+        .page {
             display: flex;
             align-items: center;
+            min-height: 70vh;
             justify-content: center;
             padding: 20px;
+        }
+
+        .page-header {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .container {
@@ -263,73 +285,88 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>☀️ Weather App</h1>
-            <p>Get current weather conditions for any city</p>
+    <div class="page-header">
+        <h1>SkyWatch</h1>
+    </div>
+    <div class="page">
+        <div class="container">
+            <div class="header">
+                <h1>☀️ Weather App</h1>
+                <p>Get current weather conditions for any city</p>
+            </div>
+    
+            <div class="search-container">
+                <form class="search-form" id="weatherForm">
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        id="cityInput" 
+                        placeholder="Enter city name..." 
+                        required
+                    >
+                    <button type="submit" class="search-btn" id="searchBtn">
+                        Search
+                    </button>
+                </form>
+    
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Getting weather data...</p>
+                </div>
+    
+                <div class="error-message" id="errorMessage"></div>
+            </div>
+    
+            <div class="weather-card" id="weatherCard">
+                <div class="weather-header">
+                    <div class="city-name" id="cityName"></div>
+                </div>
+    
+                <div class="weather-main">
+                    <img class="weather-icon" id="weatherIcon" alt="Weather Icon">
+                    <div class="temperature" id="temperature"></div>
+                </div>
+    
+                <div class="description" id="description"></div>
+                <div class="feels-like" id="feelsLike"></div>
+    
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Humidity</div>
+                        <div class="detail-value" id="humidity"></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Wind Speed</div>
+                        <div class="detail-value" id="windSpeed"></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Pressure</div>
+                        <div class="detail-value" id="pressure"></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Visibility</div>
+                        <div class="detail-value" id="visibility"></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Sunrise</div>
+                        <div class="detail-value" id="sunrise"></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Sunset</div>
+                        <div class="detail-value" id="sunset"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="search-container">
-            <form class="search-form" id="weatherForm">
-                <input 
-                    type="text" 
-                    class="search-input" 
-                    id="cityInput" 
-                    placeholder="Enter city name..." 
-                    required
-                >
-                <button type="submit" class="search-btn" id="searchBtn">
-                    Search
-                </button>
-            </form>
-
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p>Getting weather data...</p>
-            </div>
-
-            <div class="error-message" id="errorMessage"></div>
-        </div>
-
-        <div class="weather-card" id="weatherCard">
-            <div class="weather-header">
-                <div class="city-name" id="cityName"></div>
-            </div>
-
-            <div class="weather-main">
-                <img class="weather-icon" id="weatherIcon" alt="Weather Icon">
-                <div class="temperature" id="temperature"></div>
-            </div>
-
-            <div class="description" id="description"></div>
-            <div class="feels-like" id="feelsLike"></div>
-
-            <div class="weather-details">
-                <div class="detail-item">
-                    <div class="detail-label">Humidity</div>
-                    <div class="detail-value" id="humidity"></div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Wind Speed</div>
-                    <div class="detail-value" id="windSpeed"></div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Pressure</div>
-                    <div class="detail-value" id="pressure"></div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Visibility</div>
-                    <div class="detail-value" id="visibility"></div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Sunrise</div>
-                    <div class="detail-value" id="sunrise"></div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Sunset</div>
-                    <div class="detail-value" id="sunset"></div>
-                </div>
-            </div>
+    </div>
+    <div class="footer">
+        <p>Made by <strong>Group 4</strong></p>
+        <div>Contributed by:
+            <span contenteditable="true" style="border-bottom: 1px dashed #fff; padding: 0 5px; font-weight: bold;">Favour Sunday</span>,
+            <p style="display: flex; flex-direction: column;">
+                <span contenteditable="true" style="border-bottom: 1px dashed #fff; padding: 0 5px;">Name 2</span>
+                <span contenteditable="true" style="border-bottom: 1px dashed #fff; padding: 0 5px;">Name 3</span>
+            </p>
         </div>
     </div>
 
