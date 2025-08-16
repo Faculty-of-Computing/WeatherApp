@@ -82,7 +82,11 @@ if __name__ == '__main__':
         print("1. Go to: https://openweathermap.org/api")
         print("2. Sign up for a free account")
         print("3. Get your API key")
-        print("4. Replace 'YOUR_OPENWEATHER_API_KEY' in the code with your actual key")
+        print("4. Add OPENWEATHER_API_KEY to your environment variables")
         print("="*60 + "\n")
     
-    app.run(debug=True)
+    # Production configuration
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    debug_mode = os.environ.get('FLASK_ENV') != 'production'
+    app.run(host='0.0.0.0', port=port, debug=debug_mode)
