@@ -103,4 +103,5 @@ def get_weather_by_location():
         return jsonify({'error': 'An error occurred while fetching weather data.'})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
